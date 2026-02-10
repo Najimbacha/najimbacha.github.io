@@ -1,604 +1,290 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Najim Bacha - Electrical Engineer | Power Distribution & SEC Projects Specialist</title>
-    <style>
-        /* ----------------- VARIABLES ----------------- */
-        :root {
-            --primary: #3498db;
-            --secondary: #2980b9;
-            --bg-gradient: linear-gradient(135deg, #1e3c72, #2a5298, #3d5aa1);
-            --card-bg: rgba(255, 255, 255, 0.95);
-            --text-color: #1a252f;
-            --subtext-color: #555;
-            --header-text-color: #ecf0f1;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Najim Bacha | Engineer & Developer</title>
 
-        /* ----------------- GLOBAL STYLES ----------------- */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            color: var(--text-color);
-            background: var(--bg-gradient);
-            min-height: 100vh;
-        }
+<script src="https://cdn.tailwindcss.com"></script>
 
-        a {
-            text-decoration: none;
-            color: inherit;
-        }
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
 
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
-        }
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        fontFamily: { sans: ['Inter', 'sans-serif'] },
+        colors: {
+          'apple-bg': '#000000',
+          'apple-gray': '#1d1d1f',
+          'apple-text-gray': '#86868b',
+          'apple-blue': '#0071e3',
+          'apple-blue-hover': '#0077ED',
+        },
+        scale: { '102': '1.02' }
+      }
+    }
+  }
+</script>
 
-        /* ----------------- CARD ----------------- */
-        .cv-card {
-            background: var(--card-bg);
-            border-radius: 20px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
-            overflow: hidden;
-            backdrop-filter: blur(15px);
-            animation: slideUp 0.8s ease-out;
-        }
+<style>
+  /* Apple Specific Polish */
+  body { background-color: #000; color: #f5f5f7; antialiased; }
+  
+  /* The "Glass" Navbar */
+  .glass-nav {
+    background: rgba(29, 29, 31, 0.72);
+    backdrop-filter: saturate(180%) blur(20px);
+    -webkit-backdrop-filter: saturate(180%) blur(20px);
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+  }
 
-        @keyframes slideUp {
-            from {opacity: 0; transform: translateY(50px);}
-            to {opacity: 1; transform: translateY(0);}
-        }
+  /* Typography Polish */
+  h1, h2, h3 { letter-spacing: -0.025em; }
+  
+  /* Smooth Fade In Up Animation Class */
+  .fade-up { opacity: 0; transform: translateY(30px); }
 
-        /* ----------------- HEADER ----------------- */
-        .header {
-            background: linear-gradient(135deg, #1a252f, #2c3e50);
-            color: var(--header-text-color);
-            padding: 60px 20px;
-            text-align: center;
-            position: relative;
-        }
-
-        .header::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
-            animation: shimmer 3s infinite;
-        }
-
-        @keyframes shimmer {
-            0% { left: -100%; }
-            100% { left: 100%; }
-        }
-
-        .profile-img {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            border: 5px solid var(--primary);
-            margin: 0 auto 20px;
-            box-shadow: 0 10px 30px rgba(52, 152, 219, 0.3);
-            overflow: hidden;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: transform 0.3s ease;
-        }
-
-        .profile-img img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            border-radius: 50%;
-        }
-
-        .profile-img:hover {
-            transform: scale(1.05);
-        }
-
-        .header h1 {
-            font-size: clamp(2rem, 5vw, 3rem);
-            margin-bottom: 10px;
-            font-weight: 700;
-            color: var(--header-text-color);
-        }
-
-        .header h2 {
-            font-size: clamp(1rem, 2.5vw, 1.3rem);
-            opacity: 0.9;
-            font-weight: 300;
-            color: var(--primary);
-            margin-bottom: 20px;
-        }
-
-        /* ----------------- CONTACT ----------------- */
-        .contact-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 15px;
-            margin-top: 30px;
-            max-width: 800px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .contact-item {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            padding: 12px 20px;
-            background: rgba(52,152,219,0.1);
-            border-radius: 25px;
-            transition: all 0.3s ease;
-            font-size: 0.95rem;
-        }
-
-        .contact-item:hover {
-            background: rgba(52,152,219,0.2);
-            transform: translateY(-2px);
-        }
-
-        /* ----------------- CONTENT ----------------- */
-        .content {
-            padding: 50px 20px;
-        }
-
-        section {
-            margin-bottom: 50px;
-            opacity: 0;
-            animation: fadeIn 0.8s ease-out forwards;
-        }
-
-        @keyframes fadeIn {
-            to { opacity: 1; }
-        }
-
-        section h3 {
-            font-size: clamp(1.5rem, 4vw, 2rem);
-            color: var(--text-color);
-            margin-bottom: 30px;
-            text-align: center;
-            position: relative;
-        }
-
-        section h3::after {
-            content: '';
-            display: block;
-            width: 80px;
-            height: 3px;
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            margin: 15px auto;
-            border-radius: 2px;
-        }
-
-        .summary-text {
-            font-size: 1.1rem;
-            text-align: justify;
-            max-width: 900px;
-            margin: 0 auto;
-            color: var(--subtext-color);
-            line-height: 1.8;
-            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
-            padding: 30px;
-            border-radius: 15px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-        }
-
-        /* ----------------- SKILLS ----------------- */
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 25px;
-            margin-top: 30px;
-        }
-
-        .skill-category {
-            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
-            padding: 30px;
-            border-radius: 15px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            transition: transform 0.3s ease;
-        }
-
-        .skill-category:hover {
-            transform: translateY(-5px);
-        }
-
-        .skill-category h4 {
-            color: var(--text-color);
-            margin-bottom: 20px;
-            font-size: 1.3rem;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .skill-list {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-        }
-
-        .skill-item {
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            color: white;
-            padding: 10px 18px;
-            border-radius: 25px;
-            font-size: 0.95rem;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            cursor: pointer;
-        }
-
-        .skill-item:hover {
-            transform: scale(1.05);
-            box-shadow: 0 5px 15px rgba(52,152,219,0.4);
-        }
-
-        /* ----------------- TIMELINE ----------------- */
-        .timeline {
-            position: relative;
-            padding-left: 30px;
-        }
-
-        .timeline::before {
-            content: '';
-            position: absolute;
-            left: 15px;
-            top: 0;
-            bottom: 0;
-            width: 3px;
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-        }
-
-        .timeline-item {
-            position: relative;
-            margin-bottom: 40px;
-            background: white;
-            padding: 30px;
-            border-radius: 15px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            margin-left: 30px;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            border-left: 4px solid var(--primary);
-        }
-
-        .timeline-item:hover {
-            transform: translateX(5px);
-            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
-        }
-
-        .timeline-item::before {
-            content: '';
-            position: absolute;
-            left: -47px;
-            top: 30px;
-            width: 14px;
-            height: 14px;
-            background: var(--primary);
-            border-radius: 50%;
-            border: 3px solid white;
-            box-shadow: 0 0 0 3px var(--primary);
-        }
-
-        .timeline-date {
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            color: white;
-            padding: 6px 18px;
-            border-radius: 20px;
-            font-size: 0.9rem;
-            display: inline-block;
-            margin-bottom: 15px;
-            font-weight: 600;
-        }
-
-        .timeline-title {
-            font-size: 1.4rem;
-            color: var(--text-color);
-            margin-bottom: 8px;
-            font-weight: 600;
-        }
-
-        .timeline-company {
-            font-size: 1.1rem;
-            color: var(--primary);
-            margin-bottom: 15px;
-            font-weight: 500;
-        }
-
-        .timeline-description {
-            color: var(--subtext-color);
-            line-height: 1.6;
-        }
-
-        .timeline-description ul {
-            margin-top: 10px;
-            padding-left: 20px;
-        }
-
-        .timeline-description li {
-            margin-bottom: 8px;
-        }
-
-        /* ----------------- COMPETENCIES ----------------- */
-        .competencies-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-            margin-top: 30px;
-        }
-
-        .competency-item {
-            background: white;
-            padding: 20px;
-            border-radius: 12px;
-            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
-            text-align: center;
-            transition: all 0.3s ease;
-            border-top: 4px solid var(--primary);
-        }
-
-        .competency-item:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 6px 20px rgba(0,0,0,0.15);
-        }
-
-        /* ----------------- INTERESTS ----------------- */
-        .interests-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
-            margin-top: 30px;
-        }
-
-        .interest-item {
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            color: white;
-            padding: 20px;
-            border-radius: 15px;
-            text-align: center;
-            transition: transform 0.3s ease;
-            cursor: pointer;
-        }
-
-        .interest-item:hover {
-            transform: scale(1.05) rotate(2deg);
-        }
-
-        /* ----------------- DOWNLOAD BUTTON ----------------- */
-        .download-btn {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            color: white;
-            padding: 15px 25px;
-            border: none;
-            border-radius: 50px;
-            font-size: 1rem;
-            cursor: pointer;
-            box-shadow: 0 10px 30px rgba(52,152,219,0.4);
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            z-index: 1000;
-        }
-
-        .download-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 15px 40px rgba(52,152,219,0.6);
-        }
-
-        /* ----------------- RESPONSIVE ----------------- */
-        @media (max-width: 768px) {
-            .contact-grid { grid-template-columns: 1fr; }
-            .skills-grid { grid-template-columns: 1fr; }
-            .timeline-item { margin-left: 20px; }
-        }
-
-        /* ----------------- PRINT ----------------- */
-        @media print {
-            body { background: white; }
-            .cv-card { box-shadow: none; }
-            .download-btn { display: none; }
-            section { page-break-inside: avoid; }
-        }
-    </style>
+  /* Hide Scrollbar */
+  ::-webkit-scrollbar { width: 0px; background: transparent; }
+</style>
 </head>
-<body>
-    <div class="container">
-        <div class="cv-card">
-            <header class="header">
-                <div class="profile-img">
-                    <img src="https://media.licdn.com/dms/image/v2/D4D03AQH9ryE3iqN-VQ/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1688543931940?e=1758758400&v=beta&t=x3UwDaQ4UXG0JKKyQPg9VhnvwC1Gy_Ws8yGWTd2BiEs" alt="Najim Bacha" loading="lazy">
-                </div>
-                <h1>Najim Bacha</h1>
-                <h2>Electrical Engineer | Power Distribution & SEC Projects Specialist</h2>
-                <div class="contact-grid">
-                    <div class="contact-item"><span>📧</span><span>najimbacha1@gmail.com</span></div>
-                    <div class="contact-item"><span>📞</span><span>+966 53-779-8312</span></div>
-                    <div class="contact-item"><span>📍</span><span>Taif, Saudi Arabia</span></div>
-                    <div class="contact-item"><span>🔗</span><span>linkedin.com/in/najimbacha</span></div>
-                    <div class="contact-item"><span>🆔</span><span>Iqama: 2546930732 (Transferable)</span></div>
-                    <div class="contact-item"><span>🚘</span><span>Saudi Driving License: Yes</span></div>
-                </div>
-            </header>
+<body class="selection:bg-apple-blue selection:text-white">
 
-            <main class="content">
-                <!-- Professional Summary -->
-                <section>
-                    <h3>Professional Summary</h3>
-                    <p class="summary-text">
-                        Detail-oriented Electrical Engineer with over 3 years of proven experience in power system design, site execution, and regulatory compliance within the Saudi Electricity Company (SEC) framework. Demonstrated ability to manage full project lifecycles — from design and documentation to installation, testing, and handover — while ensuring strict adherence to SEC, IEC, IEEE, and SASO standards. Adept at optimizing workflows through automation tools and consistently reducing rework by delivering technically sound and inspector-approved documentation.
-                    </p>
-                </section>
+<nav class="fixed top-0 w-full z-50 glass-nav transition-all duration-300">
+  <div class="max-w-5xl mx-auto px-6 h-12 flex items-center justify-between text-xs font-medium">
+    <a href="#" class="text-white hover:text-apple-text-gray transition-colors text-lg"> NB</a>
+    <div class="hidden md:flex space-x-8 text-[#dcdcdf]">
+      <a href="#about" class="hover:text-white transition-colors">About</a>
+      <a href="#engineering" class="hover:text-white transition-colors">Engineering</a>
+      <a href="#software" class="hover:text-white transition-colors">Software</a>
+      <a href="#projects" class="hover:text-white transition-colors">Projects</a>
+      <a href="#contact" class="hover:text-white transition-colors">Contact</a>
+    </div>
+    <a href="#contact" class="bg-apple-blue hover:bg-apple-blue-hover text-white px-3 py-1 rounded-full transition-all">
+      Hire Me
+    </a>
+  </div>
+</nav>
 
-                <!-- Technical Skills -->
-                <section>
-                    <h3>Technical Skills</h3>
-                    <div class="skills-grid">
-                        <div class="skill-category">
-                            <h4>🔧 Core Engineering</h4>
-                            <ul class="skill-list">
-                                <li class="skill-item">Power system design & analysis</li>
-                                <li class="skill-item">Load calculation & fault analysis</li>
-                                <li class="skill-item">Electrical protection settings</li>
-                                <li class="skill-item">Cable sizing</li>
-                            </ul>
-                        </div>
-                        <div class="skill-category">
-                            <h4>💻 Software & Tools</h4>
-                            <ul class="skill-list">
-                                <li class="skill-item">AutoCAD Electrical</li>
-                                <li class="skill-item">ETAP</li>
-                                <li class="skill-item">MATLAB/Simulink</li>
-                                <li class="skill-item">Single-line diagrams & schematics</li>
-                            </ul>
-                        </div>
-                        <div class="skill-category">
-                            <h4>📋 Standards & Compliance</h4>
-                            <ul class="skill-list">
-                                <li class="skill-item">SEC Standards</li>
-                                <li class="skill-item">IEC Standards</li>
-                                <li class="skill-item">IEEE Standards</li>
-                                <li class="skill-item">SASO Standards</li>
-                            </ul>
-                        </div>
-                        <div class="skill-category">
-                            <h4>🔍 Field Operations</h4>
-                            <ul class="skill-list">
-                                <li class="skill-item">Site inspection & troubleshooting</li>
-                                <li class="skill-item">Testing & commissioning</li>
-                                <li class="skill-item">Technical documentation</li>
-                                <li class="skill-item">Quality assurance</li>
-                            </ul>
-                        </div>
-                    </div>
-                </section>
+<section class="relative min-h-screen flex flex-col items-center justify-center text-center px-6 pt-20 overflow-hidden">
+  
+  <div class="max-w-4xl mx-auto z-10">
+    <h2 class="text-apple-blue font-semibold text-xl md:text-2xl mb-4 fade-up">Najim Bacha</h2>
+    <h1 class="text-5xl md:text-8xl font-bold tracking-tight mb-6 leading-[1.05] fade-up">
+      Engineer.<br>
+      <span class="text-apple-text-gray">Developer.</span>
+    </h1>
+    <p class="text-xl md:text-2xl text-apple-text-gray max-w-2xl mx-auto mb-10 font-medium fade-up">
+      Bridging the gap between high-voltage systems and high-performance code.
+    </p>
+    
+    <div class="flex flex-col md:flex-row gap-4 justify-center items-center fade-up">
+      <a href="#projects" class="bg-apple-blue hover:bg-apple-blue-hover text-white px-8 py-3 rounded-full font-medium text-lg transition-all transform hover:scale-105">
+        View Work
+      </a>
+      <a href="#about" class="text-apple-blue hover:underline text-lg font-medium flex items-center gap-1">
+        Learn more <span class="text-xs">›</span>
+      </a>
+    </div>
+  </div>
 
-                <!-- Professional Experience -->
-                <section>
-                    <h3>Professional Experience</h3>
-                    <div class="timeline">
-                        <article class="timeline-item">
-                            <div class="timeline-date">2023 - Present</div>
-                            <h4 class="timeline-title">Electrical Engineer</h4>
-                            <div class="timeline-company">Nahdet Al Diyar (SEC Contractor) - Saudi Arabia</div>
-                            <div class="timeline-description">
-                                <ul>
-                                    <li>Delivered electrical system designs in compliance with SEC and IEC standards</li>
-                                    <li>Prepared and submitted comprehensive documentation including load schedules, SLDs, and voltage drop calculations</li>
-                                    <li>Liaised with SEC engineers to align equipment approvals and project inspection schedules</li>
-                                    <li>Supervised installation of MV/LV panels, transformers, and cabling per SEC specifications</li>
-                                    <li>Conducted pre-commissioning inspections and documented testing, protection settings, and grounding verifications</li>
-                                    <li>Utilized ETAP and AutoCAD Electrical to streamline design reviews and reduce rework</li>
-                                    <li>Ensured material compliance with SEC-approved vendor lists and specifications</li>
-                                    <li>Led project handovers with complete as-built documentation and final approval packages</li>
-                                </ul>
-                            </div>
-                        </article>
-                        <article class="timeline-item">
-                            <div class="timeline-date">2022</div>
-                            <h4 class="timeline-title">Electrical Supervisor</h4>
-                            <div class="timeline-company">Off Premises Solution - Jeddah, Saudi Arabia</div>
-                            <div class="timeline-description">
-                                <ul>
-                                    <li>Led a field team to implement complex power distribution systems according to engineering drawings and load specifications</li>
-                                    <li>Produced detailed AutoCAD Electrical schematics, ensuring system safety and performance</li>
-                                    <li>Managed technical documentation for project compliance and approvals</li>
-                                    <li>Conducted site inspections to maintain execution quality and adherence to NEC safety standards</li>
-                                    <li>Resolved technical issues on-site through root cause analysis and system diagnostics</li>
-                                </ul>
-                            </div>
-                        </article>
-                    </div>
-                </section>
+  <div class="mt-16 relative w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden border-4 border-[#1d1d1f] shadow-2xl fade-up" id="hero-image">
+    <img src="assets/najim.png" alt="Najim Bacha" class="w-full h-full object-cover scale-110"
+         onerror="this.src='https://ui-avatars.com/api/?name=Najim+Bacha&background=1d1d1f&color=fff&size=512&font-size=0.33'">
+  </div>
+</section>
 
-                <!-- Education -->
-                <section>
-                    <h3>Education</h3>
-                    <div class="timeline">
-                        <article class="timeline-item">
-                            <div class="timeline-date">Graduated</div>
-                            <h4 class="timeline-title">Bachelor of Science in Electrical Engineering</h4>
-                            <div class="timeline-company">University of Engineering & Technology, Peshawar</div>
-                            <div class="timeline-description">
-                                <p><strong>Relevant Coursework:</strong> Power Systems, Circuit Analysis, Electrical Machines, Control Systems, Signal Processing</p>
-                                <p><strong>Certification:</strong> Certified Registered Engineer</p>
-                            </div>
-                        </article>
-                        <article class="timeline-item">
-                            <div class="timeline-date">Pre-Engineering</div>
-                            <h4 class="timeline-title">Faculty of Science (Pre-Engineering)</h4>
-                            <div class="timeline-company">AIMS Group of Colleges</div>
-                        </article>
-                    </div>
-                </section>
-
-                <!-- Core Competencies -->
-                <section>
-                    <h3>Core Competencies</h3>
-                    <div class="competencies-grid">
-                        <div class="competency-item"><h4>SEC-Compliant Design & Documentation</h4></div>
-                        <div class="competency-item"><h4>Supervise installation of cables, transformers, RMUs, and minipillars ensuring safety and quality</h4></div>
-                        <div class="competency-item"><h4>Coordinate electrical teams and projects for timely, efficient execution</h4></div>
-                        <div class="competency-item"><h4>Lead and mentor on-site teams, promoting teamwork and safety awareness</h4></div>
-                        <div class="competency-item"><h4>Troubleshoot and resolve technical issues in electrical installations</h4></div>
-                       
-                     <div class="competency-item"><h4>Conduct inspections and testing to ensure quality and operational reliability of installations</h4></div>
-                       <div class="competency-item"><h4>Review technical drawings and specifications to guide accurate installations</h4></div>
-                     <div class="competency-item"><h4>Technical Submittals & As-Built Documentation</h4></div>
-                        
-                    </div>
-                </section>
-
-                <!-- Activities & Interests -->
-                <section>
-                    <h3>Activities & Interests</h3>
-                    <div class="interests-grid">
-                        <div class="interest-item"><h4>📝 Technical Writing</h4></div>
-                        <div class="interest-item"><h4>🌱 Environmental Awareness</h4></div>
-                        <div class="interest-item"><h4>⚙️ System Design Challenges</h4></div>
-                        <div class="interest-item"><h4>⚽ Football</h4></div>
-                        <div class="interest-item"><h4>💻 Technology Trends</h4></div>
-                        <div class="interest-item"><h4>✈️ Cultural & Engineering Travel</h4></div>
-                    </div>
-                </section>
-            </main>
-        </div>
+<section id="about" class="bg-[#000] py-32 px-6">
+  <div class="max-w-6xl mx-auto">
+    <div class="mb-16">
+      <h2 class="text-4xl md:text-6xl font-bold mb-4">Expertise.</h2>
+      <p class="text-xl text-apple-text-gray font-medium">A powerful combination.</p>
     </div>
 
-    <a href="#" class="download-btn" onclick="window.print(); return false;">
-        <span>📄</span>
-        <span>Download PDF</span>
-    </a>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 auto-rows-[400px]">
+      
+      <div class="md:col-span-2 bg-apple-gray rounded-[30px] p-10 relative overflow-hidden group hover:scale-[1.01] transition-transform duration-500 cursor-default bento-card">
+        <div class="z-10 relative h-full flex flex-col justify-between">
+          <div>
+            <h3 class="text-sm font-semibold text-apple-text-gray uppercase tracking-widest mb-2">Engineering</h3>
+            <h4 class="text-3xl md:text-4xl font-bold text-white max-w-md">Precision Power Systems.</h4>
+          </div>
+          <div class="space-y-2">
+             <p class="text-gray-400">MV/LV Distribution • Transformer Installation • Site Engineering</p>
+             <p class="text-sm text-apple-text-gray">Taif, Saudi Arabia</p>
+          </div>
+        </div>
+        <div class="absolute -right-20 -bottom-40 w-96 h-96 bg-yellow-600/20 blur-[100px] rounded-full group-hover:bg-yellow-600/30 transition-colors"></div>
+      </div>
 
-    <script>
-        // Animate sections on scroll using IntersectionObserver
-        document.addEventListener('DOMContentLoaded', function() {
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) entry.target.style.opacity = 1;
-                });
-            }, { threshold: 0.1 });
+      <div class="bg-apple-gray rounded-[30px] p-10 relative overflow-hidden group hover:scale-[1.01] transition-transform duration-500 cursor-default bento-card">
+        <div class="z-10 relative h-full flex flex-col justify-between">
+          <div>
+            <h3 class="text-sm font-semibold text-apple-text-gray uppercase tracking-widest mb-2">Development</h3>
+            <h4 class="text-3xl font-bold text-white">Flutter & Web.</h4>
+          </div>
+          <div class="text-4xl">📱</div>
+        </div>
+        <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+        <div class="absolute -right-10 -top-10 w-60 h-60 bg-blue-600/20 blur-[80px] rounded-full group-hover:bg-blue-600/30 transition-colors"></div>
+      </div>
 
-            document.querySelectorAll('section').forEach(section => observer.observe(section));
-        });
-        
+      <div class="bg-white text-black rounded-[30px] p-10 relative overflow-hidden group hover:scale-[1.01] transition-transform duration-500 cursor-default bento-card">
+        <div class="z-10 relative h-full flex flex-col justify-between">
+          <div>
+            <h3 class="text-sm font-semibold text-gray-500 uppercase tracking-widest mb-2">Apps</h3>
+            <h4 class="text-3xl font-bold">Published on Play Store.</h4>
+          </div>
+          <a href="https://play.google.com/store/apps/details?id=com.saudi.drivingtheory" class="inline-flex items-center gap-2 font-semibold text-apple-blue hover:underline">
+            View App <span class="text-xl">↗</span>
+          </a>
+        </div>
+      </div>
 
-        
-    </script>
-    
-    
+      <div class="md:col-span-2 bg-apple-gray rounded-[30px] p-10 relative overflow-hidden group hover:scale-[1.01] transition-transform duration-500 cursor-default bento-card">
+         <div class="grid grid-cols-3 gap-4 h-full items-center text-center">
+            <div>
+              <div class="text-4xl md:text-5xl font-bold text-white mb-2">3+</div>
+              <div class="text-sm text-apple-text-gray font-medium">Years Exp.</div>
+            </div>
+            <div class="border-l border-white/10 h-16"></div>
+            <div>
+               <div class="text-4xl md:text-5xl font-bold text-white mb-2">4.8</div>
+               <div class="text-sm text-apple-text-gray font-medium">App Rating</div>
+            </div>
+         </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section id="projects" class="bg-[#000] py-24 px-6 border-t border-[#1d1d1f]">
+  <div class="max-w-6xl mx-auto">
+    <h2 class="text-4xl md:text-6xl font-bold mb-16 text-center">Selected Work.</h2>
+
+    <div class="group relative bg-[#101010] rounded-[30px] overflow-hidden mb-10 project-card">
+      <div class="md:flex items-center h-full">
+        <div class="p-10 md:p-16 md:w-1/2 flex flex-col justify-center">
+          <h3 class="text-apple-blue font-semibold mb-2">Featured Application</h3>
+          <h4 class="text-3xl md:text-5xl font-bold text-white mb-6">Saudi Driving Theory.</h4>
+          <p class="text-apple-text-gray text-lg mb-8 leading-relaxed">
+            A robust mobile learning platform helping users prepare for driving exams. Built with Flutter, featuring real-time quizzes and progress tracking.
+          </p>
+          <a href="https://play.google.com/store/apps/details?id=com.saudi.drivingtheory" class="bg-white text-black px-6 py-3 rounded-full font-medium w-fit hover:bg-gray-200 transition-colors">
+            View on Play Store
+          </a>
+        </div>
+        <div class="md:w-1/2 h-[400px] md:h-[600px] bg-[#1a1a1a] relative overflow-hidden">
+          <div class="absolute inset-0 flex items-center justify-center text-[#2a2a2a] text-9xl font-bold select-none opacity-20">
+            APP
+          </div>
+          <img src="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?q=80&w=2670&auto=format&fit=crop" 
+               class="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:scale-105 transition-transform duration-700" alt="App Mockup">
+        </div>
+      </div>
+    </div>
+
+    <div class="group relative bg-[#101010] rounded-[30px] overflow-hidden project-card">
+      <div class="md:flex items-center h-full flex-row-reverse">
+        <div class="p-10 md:p-16 md:w-1/2 flex flex-col justify-center">
+          <h3 class="text-purple-500 font-semibold mb-2">Infrastructure</h3>
+          <h4 class="text-3xl md:text-5xl font-bold text-white mb-6">1 MVA Transformer.</h4>
+          <p class="text-apple-text-gray text-lg mb-8 leading-relaxed">
+            Complex installation of MV/LV power distribution systems. Managed safety protocols, cable termination, and final commissioning for a residential compound.
+          </p>
+          <span class="text-apple-text-gray text-sm">Completed in Taif, KSA</span>
+        </div>
+        <div class="md:w-1/2 h-[400px] md:h-[600px] bg-[#1a1a1a] relative overflow-hidden">
+           <div class="absolute inset-0 flex items-center justify-center text-[#2a2a2a] text-9xl font-bold select-none opacity-20">
+            ENG
+          </div>
+          <img src="https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?q=80&w=2670&auto=format&fit=crop" 
+               class="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:scale-105 transition-transform duration-700" alt="Engineering">
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<footer class="bg-[#1d1d1f] py-12 px-6 text-xs text-apple-text-gray border-t border-[#424245]">
+  <div class="max-w-4xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
+    <div class="text-center md:text-left">
+      <p class="mb-2 text-white">Engr. Najim Bacha</p>
+      <p>najimbacha1@gmail.com • +966 53 779 8312</p>
+    </div>
+    <div class="flex gap-6">
+       <a href="#" class="hover:text-white hover:underline">LinkedIn</a>
+       <a href="#" class="hover:text-white hover:underline">GitHub</a>
+       <a href="#" class="hover:text-white hover:underline">Download CV</a>
+    </div>
+    <p>© 2026 Najim Bacha. All rights reserved.</p>
+  </div>
+</footer>
+
+<script>
+  // GSAP Animations to mimic Apple's "Scroll Reveal"
+  gsap.registerPlugin(ScrollTrigger);
+
+  // 1. Hero Fade In
+  gsap.to(".fade-up", {
+    y: 0,
+    opacity: 1,
+    duration: 1,
+    stagger: 0.15,
+    ease: "power2.out"
+  });
+
+  // 2. Bento Grid Reveal
+  gsap.utils.toArray('.bento-card').forEach((card, i) => {
+    gsap.from(card, {
+      scrollTrigger: {
+        trigger: card,
+        start: "top 85%",
+        toggleActions: "play none none reverse"
+      },
+      y: 50,
+      opacity: 0,
+      duration: 0.8,
+      delay: i * 0.1, // Stagger effect
+      ease: "power3.out"
+    });
+  });
+
+  // 3. Project Cards Scale Effect
+  gsap.utils.toArray('.project-card').forEach((card) => {
+    gsap.from(card, {
+      scrollTrigger: {
+        trigger: card,
+        start: "top 90%",
+      },
+      scale: 0.95,
+      opacity: 0,
+      duration: 1,
+      ease: "power2.out"
+    });
+  });
+
+  // 4. Hero Image Parallax
+  gsap.to("#hero-image", {
+    scrollTrigger: {
+      trigger: "body",
+      start: "top top",
+      end: "bottom top",
+      scrub: 1
+    },
+    y: 100, // Moves down slower than scroll
+    opacity: 0.5
+  });
+
+</script>
+
 </body>
 </html>
