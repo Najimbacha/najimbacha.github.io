@@ -48,7 +48,8 @@ nav{position:fixed;top:0;width:100%;z-index:100;padding:0 52px;height:62px;displ
 .nav-links a:hover::after{width:100%;}
 .nav-cta{background:linear-gradient(120deg,var(--accent),var(--accent2));color:white;padding:9px 22px;border-radius:99px;font-size:0.8rem;font-weight:700;text-decoration:none;cursor:none;box-shadow:0 0 22px rgba(139,92,246,0.35);transition:transform .2s,box-shadow .2s;}
 .nav-cta:hover{transform:scale(1.06);box-shadow:0 0 36px rgba(139,92,246,0.55);}
-@media(max-width:760px){.nav-links{display:none;}nav{padding:0 24px;}}
+@media(max-width:760px){.nav-links{display:none;}nav{padding:0 20px;}#menu-btn{display:flex!important;}}
+.mb{display:block;width:22px;height:2px;background:var(--text);border-radius:2px;transition:all .25s;}
 
 /* ── HERO ── */
 #hero{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:100px 24px 80px;text-align:center;overflow:hidden;position:relative;}
@@ -228,7 +229,112 @@ footer{border-top:1px solid var(--border);padding:26px 52px;display:flex;justify
 .fl{font-family:'Syne',sans-serif;font-weight:800;font-size:1.1rem;color:var(--text);}
 
 .reveal{opacity:0;transform:translateY(46px);}
-@media(max-width:600px){.app-body{padding:36px 28px;}.cw{padding:56px 28px;}}
+
+/* ══════════════════════════════════════
+   MOBILE — Full Responsive Overhaul
+══════════════════════════════════════ */
+@media(max-width:800px){
+
+  /* Hide custom cursor on touch devices */
+  #cur,#cur-r{display:none;}
+  body{cursor:auto;}
+  .btn-p,.btn-g,.nav-cta,.app-btn,.cw-link,a,button{cursor:pointer;}
+
+  /* NAV */
+  nav{padding:0 20px;height:56px;}
+  .nav-cta{padding:7px 16px;font-size:.76rem;}
+
+  /* HERO */
+  #hero{padding:88px 20px 72px;min-height:100svh;}
+  .eyebrow{font-size:.63rem;padding:5px 14px;letter-spacing:.11em;}
+  .hero-h{font-size:clamp(2.8rem,13vw,4.6rem);margin-bottom:14px;}
+  .hero-statement{font-size:1rem;line-height:1.5;}
+  .hero-sub{font-size:.88rem;line-height:1.7;margin-bottom:30px;}
+  .hero-stats{gap:8px;margin-bottom:28px;}
+  .stat-pill{padding:8px 14px;border-radius:12px;}
+  .stat-pill strong{font-size:1.2rem;}
+  .stat-pill span{font-size:.58rem;}
+  .hero-btns{flex-direction:column;align-items:center;gap:10px;}
+  .btn-p,.btn-g{width:100%;max-width:300px;text-align:center;justify-content:center;padding:14px 22px;}
+
+  /* Hide heavy bg shapes for perf */
+  #r2,#b1,#sv2,#sv3{display:none;}
+
+  /* TICKER */
+  .ticker-wrap{padding:13px 0;}
+  .ti{font-size:.7rem;}
+
+  /* SECTION SPACING */
+  #apps,#skills,#experience,#contact{padding:72px 20px;}
+  .sec-title{font-size:clamp(1.9rem,9vw,3rem);margin-bottom:36px;}
+  .sec-label{font-size:.62rem;}
+
+  /* APPS — stack vertically: info on top, visual as accent strip below */
+  .app-card,
+  .app-card.rev{
+    grid-template-columns:1fr;
+    direction:ltr;
+    min-height:unset;
+    border-radius:22px;
+  }
+  .app-card.rev>.app-body{order:1;}
+  .app-card.rev>.app-vis{order:2;}
+  .app-body{padding:30px 26px 26px;}
+  .app-seq{font-size:.6rem;margin-bottom:10px;}
+  .app-name{font-size:clamp(1.55rem,7vw,2.1rem);margin-bottom:12px;}
+  .app-desc{font-size:.86rem;line-height:1.7;margin-bottom:18px;max-width:100%;}
+  .app-tags{gap:6px;margin-bottom:22px;}
+  .tag{font-size:.67rem;padding:4px 11px;}
+  .app-btn{
+    width:100%;justify-content:center;
+    padding:13px 20px;font-size:.84rem;
+    border-radius:14px;
+    transform:none!important;/* disable horizontal slide on touch */
+  }
+  .app-vis{min-height:180px;max-height:220px;}
+  .vis-icon{font-size:5rem;}
+  .vis-svg svg{width:200px;height:200px;}
+
+  /* EXPERIENCE TIMELINE */
+  .timeline::before{left:16px;}
+  .t-item{grid-template-columns:44px 1fr;gap:14px;}
+  .t-circle{width:11px;height:11px;}
+  .t-card{padding:26px 22px;border-radius:18px;margin-bottom:16px;}
+  .t-card-glow{display:none;}/* skip glow on mobile */
+  .t-role{font-size:1.3rem;}
+  .t-company{font-size:.88rem;}
+  .t-period{font-size:.7rem;margin-bottom:20px;}
+  .t-duties li{font-size:.83rem;gap:10px;}
+  .t-note{font-size:.75rem;padding:11px 14px;margin-top:18px;}
+  .t-deco{display:none;}
+
+  /* SKILLS */
+  .sk-cols{grid-template-columns:1fr;gap:14px;}
+  .sk-col{padding:26px 22px;border-radius:18px;}
+  .sk-col-title{font-size:1.2rem;margin-bottom:14px;}
+  .sk-col-ico{width:44px;height:44px;font-size:1.3rem;margin-bottom:16px;border-radius:12px;}
+  .sk{font-size:.71rem;padding:6px 12px;}
+
+  /* CONTACT */
+  .cw{padding:44px 22px;border-radius:24px;}
+  .cw-title{font-size:clamp(1.75rem,8vw,2.8rem);}
+  .cw-sub{font-size:.9rem;margin-bottom:32px;}
+  .cw-email{font-size:.98rem;}
+  .cw-phone{font-size:.82rem;margin-bottom:32px;}
+  .cw-links{gap:8px;}
+  .cw-link{padding:9px 16px;font-size:.74rem;}
+
+  /* FOOTER */
+  footer{padding:22px 20px;flex-direction:column;text-align:center;gap:8px;}
+  footer>div{justify-content:center;}
+}
+
+/* Mid-range: 480–800px gets slightly larger sizing */
+@media(min-width:480px) and (max-width:800px){
+  .hero-h{font-size:clamp(3.4rem,11vw,5rem);}
+  .app-vis{min-height:230px;max-height:260px;}
+  .vis-icon{font-size:6.5rem;}
+}
 </style>
 </head>
 <body>
@@ -247,8 +353,21 @@ footer{border-top:1px solid var(--border);padding:26px 52px;display:flex;justify
     <li><a href="#skills">Skills</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
-  <a href="#contact" class="nav-cta">Hire Me →</a>
+  <div style="display:flex;align-items:center;gap:12px;">
+    <a href="#contact" class="nav-cta">Hire Me →</a>
+    <button id="menu-btn" onclick="toggleMenu()" style="display:none;background:none;border:none;cursor:pointer;padding:6px;flex-direction:column;gap:5px;align-items:center;justify-content:center;" aria-label="Menu">
+      <span class="mb"></span><span class="mb"></span><span class="mb"></span>
+    </button>
+  </div>
 </nav>
+<!-- Mobile Menu Overlay -->
+<div id="mob-menu" style="display:none;position:fixed;inset:0;z-index:99;background:rgba(2,1,13,0.97);backdrop-filter:blur(24px);flex-direction:column;align-items:center;justify-content:center;gap:0;">
+  <button onclick="toggleMenu()" style="position:absolute;top:20px;right:20px;background:none;border:none;color:var(--text);font-size:1.6rem;cursor:pointer;padding:8px;">✕</button>
+  <a href="#apps" onclick="toggleMenu()" style="font-family:'Syne',sans-serif;font-weight:800;font-size:2.2rem;color:var(--text);text-decoration:none;padding:18px 0;opacity:.85;transition:opacity .2s;" onmouseover="this.style.opacity=1" onmouseout="this.style.opacity=.85">Apps</a>
+  <a href="#experience" onclick="toggleMenu()" style="font-family:'Syne',sans-serif;font-weight:800;font-size:2.2rem;color:var(--text);text-decoration:none;padding:18px 0;opacity:.85;transition:opacity .2s;" onmouseover="this.style.opacity=1" onmouseout="this.style.opacity=.85">Experience</a>
+  <a href="#skills" onclick="toggleMenu()" style="font-family:'Syne',sans-serif;font-weight:800;font-size:2.2rem;color:var(--text);text-decoration:none;padding:18px 0;opacity:.85;transition:opacity .2s;" onmouseover="this.style.opacity=1" onmouseout="this.style.opacity=.85">Skills</a>
+  <a href="#contact" onclick="toggleMenu()" style="font-family:'Syne',sans-serif;font-weight:800;font-size:2.2rem;background:linear-gradient(120deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;text-decoration:none;padding:18px 0;">Contact</a>
+</div>
 
 <!-- HERO -->
 <section id="hero">
@@ -542,12 +661,13 @@ footer{border-top:1px solid var(--border);padding:26px 52px;display:flex;justify
     </svg>
     <h2 class="cw-title">Ready to <span class="gr">build</span><br>something great?</h2>
     <p class="cw-sub">I'm available for Flutter development roles, freelance app projects, and electrical engineering positions. Based in Taif — open to relocate or work remotely.</p>
-    <a href="mailto:najimbacha1@gmail.com" class="cw-email">najimbacha1@gmail.com</a>
+    <a href="/cdn-cgi/l/email-protection#a7c9c6cdcecac5c6c4cfc696e7c0cac6cecb89c4c8ca" class="cw-email"><span class="__cf_email__" data-cfemail="422c23282b2f2023212a237302252f232b2e6c212d2f">[email&#160;protected]</span></a>
     <span class="cw-phone">+966 53 779 8312</span>
     <div class="cw-links">
-      <a href="#" class="cw-link">LinkedIn</a>
-      <a href="#" class="cw-link">GitHub</a>
-      <a href="#" class="cw-link">Download CV</a>
+      <a href="https://www.linkedin.com/in/najimbacha?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank" class="cw-link">LinkedIn</a>
+      <a href="https://www.facebook.com/share/1QgxjegDNe/" target="_blank" class="cw-link">Facebook</a>
+      <a href="https://x.com/najimbacha" target="_blank" class="cw-link">X (Twitter)</a>
+      <a href="https://instagram.com/najimbacha" target="_blank" class="cw-link">Instagram</a>
     </div>
   </div>
 </section>
@@ -555,10 +675,15 @@ footer{border-top:1px solid var(--border);padding:26px 52px;display:flex;justify
 <footer>
   <div class="fl">NB.</div>
   <p>Najim Bacha · App Developer & Electrical Engineer</p>
-  <p>© 2026 · Taif, Saudi Arabia</p>
+  <div style="display:flex;gap:16px;">
+    <a href="https://www.linkedin.com/in/najimbacha" target="_blank" style="color:var(--muted);text-decoration:none;font-size:.74rem;transition:color .2s;" onmouseover="this.style.color='var(--text)'" onmouseout="this.style.color='var(--muted)'">LinkedIn</a>
+    <a href="https://www.facebook.com/share/1QgxjegDNe/" target="_blank" style="color:var(--muted);text-decoration:none;font-size:.74rem;transition:color .2s;" onmouseover="this.style.color='var(--text)'" onmouseout="this.style.color='var(--muted)'">Facebook</a>
+    <a href="https://x.com/najimbacha" target="_blank" style="color:var(--muted);text-decoration:none;font-size:.74rem;transition:color .2s;" onmouseover="this.style.color='var(--text)'" onmouseout="this.style.color='var(--muted)'">X</a>
+    <a href="https://instagram.com/najimbacha" target="_blank" style="color:var(--muted);text-decoration:none;font-size:.74rem;transition:color .2s;" onmouseover="this.style.color='var(--text)'" onmouseout="this.style.color='var(--muted)'">Instagram</a>
+  </div>
 </footer>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 /* Cursor */
 const cur=document.getElementById('cur'),curR=document.getElementById('cur-r');
 let mx=0,my=0,rx=0,ry=0;
@@ -626,6 +751,20 @@ document.querySelectorAll('.t-card').forEach(c=>{
     if(g){g.style.left=(e.clientX-r.left-140)+'px';g.style.top=(e.clientY-r.top-140)+'px';}
   });
 });
+
+// Mobile menu toggle
+function toggleMenu(){
+  const m=document.getElementById('mob-menu');
+  const open=m.style.display==='flex';
+  m.style.display=open?'none':'flex';
+  document.body.style.overflow=open?'':'hidden';
+}
+
+// Reduce canvas particles on mobile for performance
+if(window.innerWidth<=800){
+  pts.length=0;
+  for(let i=0;i<30;i++)pts.push({x:Math.random()*cv.width,y:Math.random()*cv.height,vx:(Math.random()-.5)*.18,vy:(Math.random()-.5)*.18,r:Math.random()*1.5+.3,c:'139,92,246',o:Math.random()*.3+.08});
+}
 </script>
 </body>
 </html>
