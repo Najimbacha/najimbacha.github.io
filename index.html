@@ -146,12 +146,6 @@ nav{position:fixed;top:0;width:100%;z-index:100;padding:0 52px;height:62px;displ
 .a1 .app-btn{background:linear-gradient(120deg,#8b5cf6,#60a5fa);color:white;box-shadow:0 8px 28px rgba(139,92,246,.4);}
 .a1 .vis-glow{width:340px;height:340px;background:rgba(96,165,250,.18);}
 
-/* App 2 – teal/green */
-.a2 .app-name{background:linear-gradient(120deg,#06d6a0,#34d399);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
-.a2 .tag{background:rgba(6,214,160,.1);border:1px solid rgba(6,214,160,.25);color:#34d399;}
-.a2 .app-btn{background:linear-gradient(120deg,#06d6a0,#34d399);color:#012a20;box-shadow:0 8px 28px rgba(6,214,160,.35);}
-.a2 .vis-glow{width:340px;height:340px;background:rgba(6,214,160,.14);}
-
 /* App 3 – orange/pink */
 .a3 .app-name{background:linear-gradient(120deg,#f97316,#ec4899);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
 .a3 .tag{background:rgba(249,115,22,.1);border:1px solid rgba(249,115,22,.28);color:#fb923c;}
@@ -269,7 +263,7 @@ footer{border-top:1px solid var(--border);padding:26px 52px;display:flex;justify
   .sec-title{font-size:clamp(1.9rem,9vw,3rem);margin-bottom:36px;}
   .sec-label{font-size:.62rem;}
 
-  /* APPS — stack vertically: info on top, visual as accent strip below */
+  /* APPS — stack vertically */
   .app-card,
   .app-card.rev{
     grid-template-columns:1fr;
@@ -289,7 +283,7 @@ footer{border-top:1px solid var(--border);padding:26px 52px;display:flex;justify
     width:100%;justify-content:center;
     padding:13px 20px;font-size:.84rem;
     border-radius:14px;
-    transform:none!important;/* disable horizontal slide on touch */
+    transform:none!important;
   }
   .app-vis{min-height:180px;max-height:220px;}
   .vis-icon{font-size:5rem;}
@@ -300,7 +294,7 @@ footer{border-top:1px solid var(--border);padding:26px 52px;display:flex;justify
   .t-item{grid-template-columns:44px 1fr;gap:14px;}
   .t-circle{width:11px;height:11px;}
   .t-card{padding:26px 22px;border-radius:18px;margin-bottom:16px;}
-  .t-card-glow{display:none;}/* skip glow on mobile */
+  .t-card-glow{display:none;}
   .t-role{font-size:1.3rem;}
   .t-company{font-size:.88rem;}
   .t-period{font-size:.7rem;margin-bottom:20px;}
@@ -329,7 +323,7 @@ footer{border-top:1px solid var(--border);padding:26px 52px;display:flex;justify
   footer>div{justify-content:center;}
 }
 
-/* Mid-range: 480–800px gets slightly larger sizing */
+/* Mid-range: 480–800px */
 @media(min-width:480px) and (max-width:800px){
   .hero-h{font-size:clamp(3.4rem,11vw,5rem);}
   .app-vis{min-height:230px;max-height:260px;}
@@ -386,7 +380,7 @@ footer{border-top:1px solid var(--border);padding:26px 52px;display:flex;justify
   </div>
 
   <div style="position:relative;z-index:3;width:100%;max-width:1000px;margin:0 auto;" id="hero-content">
-    <div class="eyebrow" id="ey"><span class="eyebrow-dot"></span>3 Apps Live · 3+ Years Engineering · Taif, KSA</div>
+    <div class="eyebrow" id="ey"><span class="eyebrow-dot"></span>2 Apps Live · 3+ Years Engineering · Taif, KSA</div>
     <h1 class="hero-h">
       <span class="n1">Najim Bacha</span>
       <span class="n2">.</span>
@@ -395,10 +389,10 @@ footer{border-top:1px solid var(--border);padding:26px 52px;display:flex;justify
       I build <span class="hl">apps people actually use</span> —<br>and the electrical infrastructure that powers their world.
     </p>
     <p class="hero-sub" id="hsub">
-      Flutter developer with 3 published Play Store apps. Electrical engineer with hands-on experience from site supervision to MV/LV field work. Rare combination. Real results.
+      Flutter developer with 2 published Play Store apps. Electrical engineer with hands-on experience from site supervision to MV/LV field work. Rare combination. Real results.
     </p>
     <div class="hero-stats" id="hstats">
-      <div class="stat-pill"><strong>3</strong><span>Apps Published</span></div>
+      <div class="stat-pill"><strong>2</strong><span>Apps Published</span></div>
       <div class="stat-pill"><strong>4.8★</strong><span>Avg App Rating</span></div>
       <div class="stat-pill"><strong>3+</strong><span>Years Eng. Exp.</span></div>
       <div class="stat-pill"><strong>2</strong><span>Companies</span></div>
@@ -433,11 +427,11 @@ footer{border-top:1px solid var(--border);padding:26px 52px;display:flex;justify
 <!-- APPS -->
 <section id="apps">
   <span class="sec-label reveal">What I've Shipped</span>
-  <h2 class="sec-title reveal">Three Apps.<br><span class="dim">All Live. All Mine.</span></h2>
+  <h2 class="sec-title reveal">Two Apps.<br><span class="dim">Both Live. Both Mine.</span></h2>
 
   <div class="apps-list">
 
-    <!-- App 1 -->
+    <!-- App 1 — Saudi Driving Theory -->
     <div class="app-card a1 reveal">
       <div class="app-body">
         <div class="app-seq">01 — Education</div>
@@ -449,7 +443,7 @@ footer{border-top:1px solid var(--border);padding:26px 52px;display:flex;justify
           <span class="tag">📊 Progress Tracking</span>
           <span class="tag">⭐ 4.8 Rating</span>
         </div>
-        <a href="saudi-driving-theory-app-link" class="app-btn" target="_blank">
+        <a href="https://play.google.com/store/apps/details?id=com.saudi.drivingtheory" class="app-btn" target="_blank">
           View on Play Store
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
         </a>
@@ -470,42 +464,10 @@ footer{border-top:1px solid var(--border);padding:26px 52px;display:flex;justify
       </div>
     </div>
 
-    <!-- App 2 -->
-    <div class="app-card a2 rev reveal">
+    <!-- App 2 — SnapCal -->
+    <div class="app-card a3 rev reveal">
       <div class="app-body">
-        <div class="app-seq">02 — Health & Wellness</div>
-        <h3 class="app-name">MedTime:<br>Pill Reminder.</h3>
-        <p class="app-desc">Built for anyone who forgets their daily medication — which is most people. MedTime sends smart, timely reminders and keeps a full dose history so patients and caregivers can stay on track effortlessly.</p>
-        <div class="app-tags">
-          <span class="tag">💊 Smart Reminders</span>
-          <span class="tag">📋 Dose Log</span>
-          <span class="tag">🔔 Notifications</span>
-          <span class="tag">👨‍👩‍👧 Caregiver Friendly</span>
-        </div>
-        <a href="medtime-app-link" class="app-btn" target="_blank">
-          View on Play Store
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-        </a>
-      </div>
-      <div class="app-vis">
-        <div class="vis-glow" style="bottom:-60px;left:-60px;"></div>
-        <div class="vis-icon">💊</div>
-        <div class="vis-svg">
-          <svg width="320" height="320" viewBox="0 0 320 320" fill="none" opacity="0.13">
-            <circle cx="160" cy="160" r="140" stroke="white" stroke-width="1.2"/>
-            <polygon points="160,30 280,95 280,225 160,290 40,225 40,95" stroke="white" stroke-width="1" fill="none"/>
-            <polygon points="160,75 245,118 245,202 160,245 75,202 75,118" stroke="white" stroke-width="1" fill="none"/>
-            <circle cx="160" cy="160" r="44" stroke="white" stroke-width="1.5"/>
-            <circle cx="160" cy="160" r="18" stroke="white" stroke-width="2.5"/>
-          </svg>
-        </div>
-      </div>
-    </div>
-
-    <!-- App 3 -->
-    <div class="app-card a3 reveal">
-      <div class="app-body">
-        <div class="app-seq">03 — AI & Lifestyle</div>
+        <div class="app-seq">02 — AI & Lifestyle</div>
         <h3 class="app-name">SnapCal:<br>AI Calorie Scanner.</h3>
         <p class="app-desc">No food database browsing. No manual logging. Just snap a photo of your meal and SnapCal's AI instantly identifies the food and estimates calories. The smartest way to track what you eat — built with computer vision and Flutter.</p>
         <div class="app-tags">
@@ -514,7 +476,7 @@ footer{border-top:1px solid var(--border);padding:26px 52px;display:flex;justify
           <span class="tag">🔥 Calorie Tracking</span>
           <span class="tag">⚡ Instant Results</span>
         </div>
-        <a href="snapcal-app-link" class="app-btn" target="_blank">
+        <a href="https://play.google.com/store/apps/details?id=com.snapcal.snapcal" class="app-btn" target="_blank">
           View on Play Store
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
         </a>
@@ -661,7 +623,7 @@ footer{border-top:1px solid var(--border);padding:26px 52px;display:flex;justify
     </svg>
     <h2 class="cw-title">Ready to <span class="gr">build</span><br>something great?</h2>
     <p class="cw-sub">I'm available for Flutter development roles, freelance app projects, and electrical engineering positions. Based in Taif — open to relocate or work remotely.</p>
-    <a href="/cdn-cgi/l/email-protection#a7c9c6cdcecac5c6c4cfc696e7c0cac6cecb89c4c8ca" class="cw-email"><span class="__cf_email__" data-cfemail="422c23282b2f2023212a237302252f232b2e6c212d2f">[email&#160;protected]</span></a>
+    <a href="mailto:najimbacha@email.com" class="cw-email">najimbacha@email.com</a>
     <span class="cw-phone">+966 53 779 8312</span>
     <div class="cw-links">
       <a href="https://www.linkedin.com/in/najimbacha?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank" class="cw-link">LinkedIn</a>
@@ -683,7 +645,7 @@ footer{border-top:1px solid var(--border);padding:26px 52px;display:flex;justify
   </div>
 </footer>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script>
 /* Cursor */
 const cur=document.getElementById('cur'),curR=document.getElementById('cur-r');
 let mx=0,my=0,rx=0,ry=0;
@@ -744,7 +706,7 @@ window.addEventListener('scroll',()=>{
   n.style.background=window.scrollY>80?'rgba(2,1,13,.95)':'rgba(2,1,13,.8)';
 });
 
-// Skill tag subtle entrance on hover (already handled by CSS), just add mouse glow to exp cards
+// Mouse glow on exp cards
 document.querySelectorAll('.t-card').forEach(c=>{
   c.addEventListener('mousemove',e=>{
     const r=c.getBoundingClientRect(),g=c.querySelector('.t-card-glow');
@@ -760,7 +722,7 @@ function toggleMenu(){
   document.body.style.overflow=open?'':'hidden';
 }
 
-// Reduce canvas particles on mobile for performance
+// Reduce canvas particles on mobile
 if(window.innerWidth<=800){
   pts.length=0;
   for(let i=0;i<30;i++)pts.push({x:Math.random()*cv.width,y:Math.random()*cv.height,vx:(Math.random()-.5)*.18,vy:(Math.random()-.5)*.18,r:Math.random()*1.5+.3,c:'139,92,246',o:Math.random()*.3+.08});
