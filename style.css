@@ -1258,7 +1258,7 @@ footer > div {
     grid-template-columns: 1fr;
   }
   .project-copy {
-    padding: 30px 26px;
+    padding: 38px 24px 34px;
   }
   .project-index {
     margin-bottom: 27px;
@@ -1274,13 +1274,31 @@ footer > div {
     max-width: 100%;
   }
   .wazn-art {
-    min-height: 540px;
+    min-height: 510px;
   }
   .visual-caption {
     font-size: 8px;
   }
   .nutrition-demo {
     width: 250px;
+  }
+
+  .app-logo {
+    width: 78px;
+    height: 78px;
+    border-radius: 22%;
+  }
+
+  .wazn-logo {
+    top: 24px;
+    right: 24px;
+  }
+
+  .driving-logo {
+    width: 76px;
+    height: 76px;
+    top: 22px;
+    right: 22px;
   }
   .demo-caption {
     font-size: 7px;
@@ -1289,7 +1307,7 @@ footer > div {
     left: -115px;
   }
   .driving-art {
-    min-height: 380px;
+    min-height: 410px;
     order: 2;
   }
   .road-monolith {
