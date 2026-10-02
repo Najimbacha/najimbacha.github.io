@@ -37,6 +37,7 @@ The browser check uses Python Playwright and an installed Google Chrome, with a 
 ```sh
 python -m pip install playwright
 python tests/browser_check.py
+python tests/cache_check.py
 ```
 
 Start the preview server before running the checks. Coverage includes WebGL rendering; pointer and keyboard rotation; reset and motion controls; the complete sample meal cycle; anchor targets; mobile menu and focus behavior; reduced motion; JavaScript-disabled and WebGL-disabled fallbacks; and horizontal overflow at widths from 320 to 1920 pixels. Screenshots are generated locally and excluded from Git.
@@ -44,5 +45,7 @@ Start the preview server before running the checks. Coverage includes WebGL rend
 An additional axe-core WCAG A/AA check was run on desktop and mobile during implementation. Automated checks do not replace testing on real devices or with assistive technology.
 
 ## Publishing
+
+Styles, application scripts, and the favicon use release-version query parameters in `index.html`. Update those version values whenever the corresponding files change so returning visitors do not combine new HTML with cached assets from an older release. The cache regression check simulates the original unversioned files remaining cached.
 
 The repository remains directly compatible with GitHub Pages. Keep `app-ads.txt` at the repository root. Publish by merging the feature branch and pushing to the repository's configured Pages source branch. Local edits and commits do not change the live site.
