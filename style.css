@@ -839,7 +839,7 @@ h2 span {
   height: 475px;
   object-fit: cover;
   object-position: 50% 35%;
-  filter: grayscale(1);
+  filter: none;
   transition: filter 0.5s;
 }
 .image-frame:hover img {
