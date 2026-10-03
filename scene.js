@@ -35,20 +35,20 @@ try {
   studio.width = 1024;
   studio.height = 512;
   const ctx = studio.getContext("2d");
-  ctx.fillStyle = "#161c17";
+  ctx.fillStyle = "#141c25";
   ctx.fillRect(0, 0, 1024, 512);
   const gradient = ctx.createLinearGradient(0, 0, 0, 512);
-  gradient.addColorStop(0, "#dfe8d9");
-  gradient.addColorStop(0.24, "#728176");
-  gradient.addColorStop(0.48, "#0c100e");
-  gradient.addColorStop(0.7, "#414b41");
-  gradient.addColorStop(1, "#101810");
+  gradient.addColorStop(0, "#e6f3ff");
+  gradient.addColorStop(0.24, "#7c92ac");
+  gradient.addColorStop(0.48, "#090e16");
+  gradient.addColorStop(0.7, "#435363");
+  gradient.addColorStop(1, "#101825");
   ctx.fillStyle = gradient;
   ctx.fillRect(0, 0, 1024, 512);
   ctx.fillStyle = "#ffffff";
   ctx.fillRect(80, 30, 170, 235);
   ctx.fillRect(570, 70, 60, 340);
-  ctx.fillStyle = "#a3b38b";
+  ctx.fillStyle = "#91bedf";
   ctx.fillRect(760, 170, 195, 115);
   const envSource = new THREE.CanvasTexture(studio);
   envSource.mapping = THREE.EquirectangularReflectionMapping;
@@ -59,11 +59,11 @@ try {
   envSource.dispose();
   pmrem.dispose();
 
-  scene.add(new THREE.HemisphereLight(0xe4efda, 0x151d12, 2));
+  scene.add(new THREE.HemisphereLight(0xe4efff, 0x101a28, 2));
   const light = new THREE.DirectionalLight(0xffffff, 4);
   light.position.set(-3, 5, 5);
   scene.add(light);
-  const rim = new THREE.DirectionalLight(0xc6f16b, 2.5);
+  const rim = new THREE.DirectionalLight(0xa5d9ff, 2.5);
   rim.position.set(4, -2, -2);
   scene.add(rim);
 
@@ -71,21 +71,21 @@ try {
   sculpture.rotation.set(0.22, -0.3, -0.3);
   scene.add(sculpture);
   const chrome = new THREE.MeshStandardMaterial({
-    color: 0xcbd3c7,
+    color: 0xd9e5f0,
     metalness: 1,
-    roughness: 0.19,
+    roughness: 0.16,
     envMapIntensity: 1.7,
   });
   const darkChrome = new THREE.MeshStandardMaterial({
-    color: 0x5e7056,
+    color: 0x6589a6,
     metalness: 0.9,
     roughness: 0.24,
   });
-  const lime = new THREE.MeshStandardMaterial({
-    color: 0xc6f16b,
-    roughness: 0.24,
-    metalness: 0.32,
-    emissive: 0x8aac32,
+  const ice = new THREE.MeshStandardMaterial({
+    color: 0xb6def8,
+    roughness: 0.18,
+    metalness: 0.55,
+    emissive: 0x426a9a,
     emissiveIntensity: 0.16,
   });
   function ring(radius, tube, material, x, y, z) {
@@ -97,17 +97,19 @@ try {
     sculpture.add(mesh);
     return mesh;
   }
-  ring(2.05, 0.155, chrome, 0.9, -0.35, 0.2);
-  ring(1.87, 0.135, chrome, -0.7, 0.85, -0.25);
-  ring(1.54, 0.18, chrome, 0.25, 1.15, 0.55);
-  ring(2.4, 0.013, darkChrome, 1.22, 0.1, -0.4);
-  ring(2.36, 0.011, darkChrome, -0.45, 0.95, 0.2);
-  const core = new THREE.Mesh(new THREE.IcosahedronGeometry(0.69, 1), lime);
+  const ribbon = new THREE.Mesh(
+    new THREE.TorusKnotGeometry(1.45, 0.36, 240, 32, 2, 3),
+    chrome,
+  );
+  ribbon.rotation.set(0.5, -0.3, 0.25);
+  sculpture.add(ribbon);
+  ring(2.65, 0.012, darkChrome, 1.22, 0.1, -0.4);
+  const core = new THREE.Mesh(new THREE.IcosahedronGeometry(0.43, 2), ice);
   sculpture.add(core);
   const coreEdges = new THREE.LineSegments(
     new THREE.EdgesGeometry(core.geometry),
     new THREE.LineBasicMaterial({
-      color: 0xe3ffb5,
+      color: 0xe3f5ff,
       transparent: true,
       opacity: 0.22,
     }),
@@ -116,11 +118,8 @@ try {
   const orbit = new THREE.Group();
   orbit.rotation.set(1.22, 0.1, -0.4);
   sculpture.add(orbit);
-  const satellite = new THREE.Mesh(
-    new THREE.SphereGeometry(0.09, 20, 16),
-    lime,
-  );
-  satellite.position.set(2.4, 0, 0);
+  const satellite = new THREE.Mesh(new THREE.SphereGeometry(0.09, 20, 16), ice);
+  satellite.position.set(2.65, 0, 0);
   orbit.add(satellite);
   const satellite2 = new THREE.Mesh(
     new THREE.SphereGeometry(0.055, 16, 12),
@@ -148,7 +147,7 @@ try {
   const stars = new THREE.Points(
     particleGeometry,
     new THREE.PointsMaterial({
-      color: 0xa8b991,
+      color: 0xabc9df,
       size: 0.014,
       transparent: true,
       opacity: 0.6,
@@ -197,7 +196,7 @@ try {
     const height = host.clientHeight;
     camera.aspect = width / height;
     // Fit the full sculpture on portrait screens, not just its center.
-    camera.position.z = camera.aspect < 0.9 ? 12.6 : 10.4;
+    camera.position.z = camera.aspect < 0.9 ? 11.7 : 10.4;
     camera.updateProjectionMatrix();
     renderer.setSize(width, height, false);
     draw();
@@ -306,8 +305,8 @@ try {
 } catch (error) {
   renderer?.dispose();
   document.querySelector("#scene-help").textContent =
-    "Static orbital study · 3D unavailable";
-  host.setAttribute("aria-label", "Static orbital sculpture");
+    "Static chrome study · 3D unavailable";
+  host.setAttribute("aria-label", "Static chrome sculpture");
   host.removeAttribute("tabindex");
   motion.disabled = true;
   reset.disabled = true;

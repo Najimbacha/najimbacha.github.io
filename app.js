@@ -54,6 +54,23 @@ document.querySelector("#meal-next").addEventListener("click", () => {
     document.querySelector(`#meal-${key}`).textContent =
       meal[key] + (["protein", "carbs", "fat"].includes(key) ? " g" : "");
   }
+  if (!preference.matches) {
+    document.querySelector(".scan-line").animate(
+      [
+        { transform: "translateY(-55px)", opacity: 0 },
+        { opacity: 1, offset: 0.2 },
+        { transform: "translateY(55px)", opacity: 0 },
+      ],
+      { duration: 650, easing: "cubic-bezier(.22,1,.36,1)" },
+    );
+    document.querySelector(".meal-result").animate(
+      [
+        { opacity: 0.3, transform: "translateY(5px)" },
+        { opacity: 1, transform: "translateY(0)" },
+      ],
+      { duration: 300, easing: "ease-out" },
+    );
+  }
 });
 const preference = matchMedia("(prefers-reduced-motion: reduce)");
 if ("IntersectionObserver" in window && !preference.matches) {
@@ -79,3 +96,20 @@ if ("IntersectionObserver" in window && !preference.matches) {
     }
   });
 }
+
+// A single scheduled update for the reading indicator; native scrolling stays intact.
+let progressFrame = 0;
+function updateProgress() {
+  progressFrame = 0;
+  const distance = document.documentElement.scrollHeight - innerHeight;
+  document.documentElement.style.setProperty(
+    "--read",
+    distance > 0 ? Math.min(scrollY / distance, 1) : 0,
+  );
+}
+function scheduleProgress() {
+  if (!progressFrame) progressFrame = requestAnimationFrame(updateProgress);
+}
+addEventListener("scroll", scheduleProgress, { passive: true });
+addEventListener("resize", scheduleProgress);
+updateProgress();

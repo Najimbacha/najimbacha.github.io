@@ -14,9 +14,10 @@ with sync_playwright() as p:
             route.fulfill(status=200, content_type='text/css' if name.endswith('.css') else 'text/javascript', body=body)
         # Exact unversioned URLs represent cache entries on returning devices.
         page.route(f'http://127.0.0.1:4173/{filename}', serve_stale)
+        page.route(f'http://127.0.0.1:4173/{filename}?v=dd82b40', serve_stale)
     page.goto('http://127.0.0.1:4173/', wait_until='networkidle')
     assert not stale_requests, f'Reused old asset URLs: {stale_requests}'
-    assert page.locator('body').evaluate('(e) => getComputedStyle(e).backgroundColor') == 'rgb(11, 13, 12)'
+    assert page.locator('body').evaluate('(e) => getComputedStyle(e).backgroundColor') == 'rgb(9, 11, 14)'
     page.locator('#scene[data-ready="true"]').wait_for()
     assert page.locator('#motion').is_enabled()
     page.locator('#meal-next').click()

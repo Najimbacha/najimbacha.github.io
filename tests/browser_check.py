@@ -12,15 +12,18 @@ with sync_playwright() as p:
     page.on('response', lambda r: failed.append(f'{r.status} {r.url}') if r.status >= 400 else None)
     page.goto('http://127.0.0.1:4173/', wait_until='networkidle')
     page.locator('#scene[data-ready="true"]').wait_for()
+    page.wait_for_function("document.getAnimations().every(a => a.playState === 'finished')")
     page.locator('#motion').click()
     assert page.locator('#motion').get_attribute('aria-pressed') == 'true'
     page.locator('#reset-scene').click()
+    page.mouse.move(10, 10)
     page.screenshot(path=str(ROOT / 'desktop-preview.png'))
     initial = page.locator('#scene canvas').screenshot(animations='disabled')
     page.locator('#scene').focus()
     page.keyboard.press('ArrowRight')
     assert initial != page.locator('#scene canvas').screenshot(animations='disabled'), 'Keyboard rotation failed'
     page.locator('#reset-scene').click()
+    page.mouse.move(10, 10)
     assert initial == page.locator('#scene canvas').screenshot(animations='disabled'), 'Reset failed'
     box = page.locator('#scene').bounding_box()
     page.mouse.move(box['x'] + box['width'] / 2, box['y'] + box['height'] / 2)
@@ -83,6 +86,7 @@ with sync_playwright() as p:
     nojs.goto('http://127.0.0.1:4173/')
     assert nojs.locator('.scene-fallback').is_visible()
     assert nojs.locator('#contact h2').is_visible()
+    assert nojs.locator('#mobile-nav').is_visible()
     # Capture a settled, unscrolled page so full-page images include all reveals
     # and do not relocate fixed elements after anchor navigation.
     preview = browser.new_page(viewport={'width': 1440, 'height': 1000}, reduced_motion='reduce')

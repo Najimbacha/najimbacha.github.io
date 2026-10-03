@@ -1,6 +1,6 @@
-# Najim Bacha / Engineering what's next
+# Najim Bacha / Ideas into reality
 
-A static portfolio rebuilt with a futuristic graphite, chrome, and lime visual identity. Features a real Three.js orbital sculpture, Wazn project showcase, interactive nutrition concept, engineering experience, and contact links.
+A static portfolio with an obsidian, silver, and glacial-blue visual identity. Features an interactive chrome knot sculpture, staged headline entrances, dimensional project reveals, Wazn's interactive nutrition concept, Mindora Lab, and a full-color portrait.
 
 ## Preview
 
@@ -17,7 +17,7 @@ Open http://127.0.0.1:4173. No build or application package installation is need
 - `index.html`: content, projects, metadata, navigation, and contact links.
 - `style.css`: responsive design, dimensional project art, and motion preferences.
 - `scene.js`: Three.js geometry, generated studio reflections, drag/keyboard controls, render scheduling, and static fallback.
-- `app.js`: mobile navigation, scroll reveals, and sample nutrition interaction.
+- `app.js`: mobile navigation, scroll reveals, reading progress, and animated sample nutrition interaction.
 - `assets/portrait.jpg`: existing portrait.
 - `assets/vendor/`: locally hosted Three.js 0.180.0 and MIT license.
 - `assets/fonts/`: locally hosted Space Grotesk and SIL Open Font License.
@@ -42,7 +42,7 @@ python tests/cache_check.py
 
 Start the preview server before running the checks. Coverage includes WebGL rendering; pointer and keyboard rotation; reset and motion controls; the complete sample meal cycle; anchor targets; mobile menu and focus behavior; reduced motion; JavaScript-disabled and WebGL-disabled fallbacks; and horizontal overflow at widths from 320 to 1920 pixels. Screenshots are generated locally and excluded from Git.
 
-An additional axe-core WCAG A/AA check was run on desktop and mobile during implementation. Automated checks do not replace testing on real devices or with assistive technology.
+An additional axe-core WCAG A/AA check was run on desktop and mobile during implementation. Automated checks do not replace testing on real devices or with assistive technology. Entry motion is finite; hover motion only runs on a fine pointer; reduced motion disables decorative CSS animation and automatic sculpture rotation. No scroll hijacking or new runtime dependency is used.
 
 ## Publishing
 
