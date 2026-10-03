@@ -766,10 +766,53 @@ h2 span {
     35px 50px 50px #0008;
   transition: transform 0.7s var(--ease);
 }
-.road-monolith strong {
-  font-size: 110px;
-  font-weight: 400;
-  line-height: 1;
+.food-art.illustrated {
+  width: 146px;
+  height: 146px;
+  background: none;
+  box-shadow: none;
+  filter: drop-shadow(0 9px 8px #0007);
+}
+.food-art canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+.steering-wheel {
+  position: relative;
+  width: 120px;
+  height: 120px;
+  border: 12px solid #243442;
+  border-radius: 50%;
+  background: radial-gradient(circle, #b0c7d5, #748b9c);
+  box-shadow:
+    inset 0 2px 3px #0009,
+    0 2px 0 #e8f7ff,
+    0 8px 0 #111c25,
+    0 13px 12px #23394e66;
+}
+.steering-wheel i {
+  position: absolute;
+  top: 42%;
+  left: 0;
+  width: 50%;
+  height: 14%;
+  background: linear-gradient(#536b7d, #162734);
+  transform-origin: right center;
+}
+.steering-wheel i:nth-child(2) {
+  transform: rotate(180deg);
+}
+.steering-wheel i:nth-child(3) {
+  transform: rotate(-90deg);
+}
+.steering-wheel b {
+  position: absolute;
+  inset: 32%;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #667f92, #172633);
+  border: 1px solid #809aab;
+  box-shadow: 0 3px 3px #0006;
 }
 .road-monolith .mono {
   font-size: 8px;
@@ -1359,8 +1402,14 @@ footer > div a {
     top: 15%;
     padding: 20px;
   }
-  .road-monolith strong {
-    font-size: 80px;
+  .steering-wheel {
+    width: 92px;
+    height: 92px;
+    border-width: 10px;
+  }
+  .food-art.illustrated {
+    width: 128px;
+    height: 128px;
   }
   .road {
     top: 40px;

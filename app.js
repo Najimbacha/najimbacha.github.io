@@ -50,6 +50,9 @@ const meals = [
 let mealIndex = 0;
 document.querySelector("#meal-next").addEventListener("click", () => {
   const meal = meals[++mealIndex % meals.length];
+  document.dispatchEvent(
+    new CustomEvent("mealpreviewchange", { detail: mealIndex % meals.length }),
+  );
   for (const key of ["name", "calories", "protein", "carbs", "fat"]) {
     document.querySelector(`#meal-${key}`).textContent =
       meal[key] + (["protein", "carbs", "fat"].includes(key) ? " g" : "");

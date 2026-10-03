@@ -31,12 +31,15 @@ with sync_playwright() as p:
     page.mouse.move(box['x'] + box['width'] / 2 + 90, box['y'] + box['height'] / 2 + 20, steps=8)
     page.mouse.up()
     assert initial != page.locator('#scene canvas').screenshot(animations='disabled'), 'Pointer rotation failed'
+    first_meal_art = page.locator('.food-art canvas').evaluate('(canvas) => canvas.toDataURL()')
     page.locator('#meal-next').click()
+    assert first_meal_art != page.locator('.food-art canvas').evaluate('(canvas) => canvas.toDataURL()'), 'Meal illustration did not change'
     assert page.locator('#meal-name').inner_text() == 'Grilled chicken bowl'
     assert page.locator('#meal-calories').inner_text() == '510'
     page.locator('#meal-next').click()
     page.locator('#meal-next').click()
     assert page.locator('#meal-name').inner_text() == 'Avocado grain bowl'
+    assert first_meal_art == page.locator('.food-art canvas').evaluate('(canvas) => canvas.toDataURL()'), 'Meal illustration cycle did not reset'
     assert 'SnapCal' not in page.locator('body').inner_text()
     assert page.evaluate("Array.from(document.querySelectorAll('a')).filter(a => a.getAttribute('href').startsWith('#')).every(a => document.querySelector(a.hash))")
     page.locator('#work').scroll_into_view_if_needed()

@@ -18,6 +18,7 @@ Open http://127.0.0.1:4173. No build or application package installation is need
 - `style.css`: responsive design, dimensional project art, and motion preferences.
 - `scene.js`: Three.js geometry, generated studio reflections, drag/keyboard controls, render scheduling, and static fallback.
 - `app.js`: mobile navigation, scroll reveals, reading progress, and animated sample nutrition interaction.
+- `illustrations.js`: locally drawn meal illustrations that follow the sample meal selection.
 - `assets/portrait.jpg`: existing portrait.
 - `assets/vendor/`: locally hosted Three.js 0.180.0 and MIT license.
 - `assets/fonts/`: locally hosted Space Grotesk and SIL Open Font License.
